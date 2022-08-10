@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,8 +28,8 @@ public class CryptoController {
     }
 
     @GetMapping(value = "/exchanges")
-    public List<Crypto> listCryptoByExchange(){
-        return repo.findByExchange("Binance");
+    public List<Crypto> listCryptoByExchange(@RequestParam String exchange){
+        return repo.findByExchange(exchange);
     }
 
     @GetMapping(value = "/top")
